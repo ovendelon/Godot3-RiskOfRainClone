@@ -98,8 +98,7 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
 
     public void Die( )
     {
-        SetCollisionLayerBit( _collision_layer, false );
-        //_fsm.SetState( new enDead() );
+        
     }
 
 }

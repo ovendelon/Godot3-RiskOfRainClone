@@ -7,10 +7,11 @@
 
 extents = Vector3( 6.08151, 1, 21.5206 )
 
-[node name="main" type="Spatial"]
+[node name="main" type="Spatial" index="0"]
 
 [node name="StaticBody" type="StaticBody" parent="." index="0"]
 
+editor/display_folded = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -30,8 +31,8 @@ disabled = false
 [node name="Camera" type="Camera" parent="." index="1"]
 
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 1, 0 )
-keep_aspect = 1
-vaspect = true
+keep_aspect = 0
+vaspect = false
 cull_mask = 1048575
 environment = null
 h_offset = 0.0
@@ -51,6 +52,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35579, 0 )
 
 [node name="bluehead" parent="." index="3" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41463, 5.23453 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.23453 )
+_sections_unfolded = [ "Collision", "Transform", "collision" ]
 
 

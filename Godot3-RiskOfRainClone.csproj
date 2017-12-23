@@ -60,14 +60,20 @@
     <Compile Include="units\_base\scripts\BaseUnit.cs" />
     <Compile Include="units\_base\scripts\UnitInterfaces.cs" />
     <Compile Include="units\_base\scripts\states\OneShotAnim.cs" />
-    <Compile Include="units\_base\scripts\states\enemy\EnemyIdle.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyAttack.cs" />
     <Compile Include="units\_base\scripts\states\enemy\EnemyChase.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyDead.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyIdle.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyTelegraph.cs" />
     <Compile Include="units\_base\scripts\states\player\PlayerAir.cs" />
     <Compile Include="units\_base\scripts\states\player\PlayerGround.cs" />
     <Compile Include="units\_base\scripts\transitions\FromOneShotAnim.cs" />
     <Compile Include="units\_base\scripts\transitions\player\PlayerJump.cs" />
     <Compile Include="units\_base\scripts\transitions\player\PlayerLand.cs" />
     <Compile Include="units\_base\scripts\transitions\player\PlayerFall.cs" />
+    <Compile Include="units\_base\scripts\transitions\enemy\EnemyDie.cs" />
+    <Compile Include="units\_base\scripts\transitions\enemy\EnemyInterruptTelegraph.cs" />
+    <Compile Include="units\_base\scripts\transitions\enemy\EnemyStartTelegraph.cs" />
     <Compile Include="units\_base\scripts\transitions\enemy\EnemyToIdle.cs" />
     <Compile Include="units\_base\scripts\transitions\enemy\EnemyToChase.cs" />
   </ItemGroup>
