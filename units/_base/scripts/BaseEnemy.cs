@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class BaseEnemy : BaseUnit
+public class BaseEnemy : BaseUnit, IUnitPushable
 {
 
     public float AttackTimer;
@@ -13,6 +13,7 @@ public class BaseEnemy : BaseUnit
     public override void _Ready()
     {
         _collision_layer = 2;
+        ((Area)FindNode( "MeleAttackArea" )).SetCollisionMaskBit( 1, true );    // monitor only player
 
         var state_spawn = new OneShotAnim( "spawn" );
         var state_chase = new EnemyChase();
@@ -42,7 +43,9 @@ public class BaseEnemy : BaseUnit
 
         // temp
         Attributes.RunSpeed = 10;
-        Attributes.MaxHealth = Attributes.Health = 100;
+        Attributes.MaxHealth = Attributes.Health = 20;
+        Attributes.Damage = 10;
+        Attributes.CritChance = 0.1f;
     }
 
     public BasePlayer FindPlayer()
@@ -56,5 +59,10 @@ public class BaseEnemy : BaseUnit
     public override void _Process(float delta)
     {
         AttackTimer = Math.Max( 0, AttackTimer - delta ); 
+    }
+
+    public void PushBack( Vector3 force )
+    {
+        Velocity += force;
     }
 }

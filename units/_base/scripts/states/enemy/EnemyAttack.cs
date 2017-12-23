@@ -12,7 +12,19 @@ public class EnemyAttack : State
         _target = e.FindPlayer();
         e.Velocity.z = 0;
         e.AttackTimer = e.AttackCooldown;
+        Attack( e );
         base.Enter( agent );
+    }
+
+    void Attack( BaseEnemy enemy )
+    {
+        var mele_area = (Area)enemy.FindNode( "MeleAttackArea" );
+        foreach ( object obj in mele_area.GetOverlappingBodies() )
+            if ( obj is BasePlayer )
+            {
+                BasePlayer player = obj as BasePlayer;
+                player.TakeDamage( enemy.CalculateDamage(player) );
+            }
     }
 
     public override void Update( Godot.Object agent )
