@@ -1,15 +1,14 @@
 using Godot;
 using System;
 
-public class Chase : State
+public class EnemyChase : State
 {
     BasePlayer _target;
 
     public override void Enter( Godot.Object agent ) 
     {
         BaseEnemy e = agent as BaseEnemy;
-        AnimationPlayer ap = e.FindNode( "AnimationPlayer" ) as AnimationPlayer;
-        ap.Play( "walk-loop" );
+        e.AnimPlayer.TransitionNodeSetCurrent( "state" , 1 );
         _target = e.FindPlayer();
         base.Enter( agent );
     }

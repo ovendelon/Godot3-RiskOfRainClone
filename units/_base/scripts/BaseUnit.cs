@@ -32,11 +32,12 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
 {
     public Vector3 Velocity;
     public UnitAttributes  Attributes;
+    public AnimationTreePlayer AnimPlayer;
 
     protected FSM _fsm;
     protected int _collision_layer;
 
-    eUnitFacing _facing;
+    eUnitFacing _facing = eUnitFacing.RIGHT;
     eUnitFacing Facing { get { return _facing; } }
     Vector3 _face_left = new Vector3( 0, (float)Const.Pi, 0 );
     Vector3 _face_right = new Vector3();
@@ -45,7 +46,8 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
 
     public override void _Ready()
     {
-        //_fsm = new FSM( this , null );
+        AnimPlayer = FindNode( "main_anim_player" ) as AnimationTreePlayer;
+        AnimPlayer.SetActive( true );
     }
 
     public override void _Process(float delta)

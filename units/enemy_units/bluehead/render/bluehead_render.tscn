@@ -2,6 +2,64 @@
 
 [ext_resource path="res://units/enemy_units/bluehead/render/bluehead.dae" type="PackedScene" id=1]
 
-[node name="bluehead_render" instance=ExtResource( 1 )]
+[node name="bluehead_render" index="0" instance=ExtResource( 1 )]
+
+[node name="main_anim_player" type="AnimationTreePlayer" parent="." index="2"]
+
+playback_process_mode = 1
+master_player = NodePath("../AnimationPlayer")
+base_path = NodePath("..")
+active = false
+base_path = NodePath("..")
+master_player = NodePath("../AnimationPlayer")
+data = {
+"active": false,
+"connections": [ "state", "spawn", 0, "anim", "spawn", 1, "anim 2", "state", 0, "anim 3", "state", 1, "spawn", "out", 0 ],
+"master": NodePath("../AnimationPlayer"),
+"nodes": [ {
+"filter": [  ],
+"from": "idle-loop",
+"id": "anim 2",
+"position": Vector2( 96, 45 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "walk-loop",
+"id": "anim 3",
+"position": Vector2( 96, 164 ),
+"type": "animation"
+}, {
+"autorestart": false,
+"autorestart_delay": 1.0,
+"autorestart_random_delay": 0.807843,
+"fade_in": 0.0,
+"fade_out": 0.0,
+"filter": [  ],
+"id": "spawn",
+"mix": false,
+"position": Vector2( 454, 79 ),
+"type": "oneshot"
+}, {
+"id": "state",
+"position": Vector2( 266, 79 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"filter": [  ],
+"from": "spawn",
+"id": "anim",
+"position": Vector2( 305, 233 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 1131, 78 ),
+"type": "output"
+} ]
+}
 
 

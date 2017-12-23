@@ -63,4 +63,86 @@ _sections_unfolded = [ "Albedo", "Flags" ]
 material/0 = SubResource( 1 )
 _sections_unfolded = [ "Geometry", "material" ]
 
+[node name="main_anim_player" type="AnimationTreePlayer" parent="." index="2"]
+
+playback_process_mode = 1
+master_player = NodePath("../AnimationPlayer")
+base_path = NodePath("..")
+active = true
+base_path = NodePath("..")
+master_player = NodePath("../AnimationPlayer")
+data = {
+"active": true,
+"connections": [ "land", "out", 0, "anim 2", "movement", 0, "anim", "movement", 1, "anim 3", "movement", 2, "anim 4", "land-inplace-running", 0, "anim 5", "land-inplace-running", 1, "movement", "land", 0, "land-inplace-running", "land", 1 ],
+"master": NodePath("../AnimationPlayer"),
+"nodes": [ {
+"filter": [  ],
+"from": "run-loop",
+"id": "anim",
+"position": Vector2( 103, 178 ),
+"type": "animation"
+}, {
+"id": "out",
+"position": Vector2( 1130, 158 ),
+"type": "output"
+}, {
+"filter": [  ],
+"from": "land_in_place",
+"id": "anim 4",
+"position": Vector2( 242, 396 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "land_running",
+"id": "anim 5",
+"position": Vector2( 241, 501 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "idle-loop",
+"id": "anim 2",
+"position": Vector2( 102, 60 ),
+"type": "animation"
+}, {
+"filter": [  ],
+"from": "jump-loop",
+"id": "anim 3",
+"position": Vector2( 102, 299 ),
+"type": "animation"
+}, {
+"id": "movement",
+"position": Vector2( 292, 158 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"id": "land-inplace-running",
+"position": Vector2( 423, 434 ),
+"transitions": [ {
+"auto_advance": false
+}, {
+"auto_advance": false
+} ],
+"type": "transition",
+"xfade": 0.0
+}, {
+"autorestart": false,
+"autorestart_delay": 1.0,
+"autorestart_random_delay": 1.0,
+"fade_in": 0.0,
+"fade_out": 0.25,
+"filter": [  ],
+"id": "land",
+"mix": false,
+"position": Vector2( 592, 160 ),
+"type": "oneshot"
+} ]
+}
+
 

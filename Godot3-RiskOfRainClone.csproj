@@ -59,14 +59,15 @@
     <Compile Include="units\_base\scripts\BasePlayer.cs" />
     <Compile Include="units\_base\scripts\BaseUnit.cs" />
     <Compile Include="units\_base\scripts\UnitInterfaces.cs" />
-    <Compile Include="units\_base\scripts\states\Idle.cs" />
-    <Compile Include="units\_base\scripts\states\enemy\Chase.cs" />
-    <Compile Include="units\_base\scripts\states\player\PlayerMove.cs" />
-    <Compile Include="units\_base\scripts\states\player\PlayerMidAir.cs" />
-    <Compile Include="units\_base\scripts\transitions\ToAir.cs" />
-    <Compile Include="units\_base\scripts\transitions\player\PlayerToMove.cs" />
-    <Compile Include="units\_base\scripts\transitions\player\PlayerToIdle.cs" />
+    <Compile Include="units\_base\scripts\states\OneShotAnim.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyIdle.cs" />
+    <Compile Include="units\_base\scripts\states\enemy\EnemyChase.cs" />
+    <Compile Include="units\_base\scripts\states\player\PlayerAir.cs" />
+    <Compile Include="units\_base\scripts\states\player\PlayerGround.cs" />
+    <Compile Include="units\_base\scripts\transitions\FromOneShotAnim.cs" />
     <Compile Include="units\_base\scripts\transitions\player\PlayerJump.cs" />
+    <Compile Include="units\_base\scripts\transitions\player\PlayerLand.cs" />
+    <Compile Include="units\_base\scripts\transitions\player\PlayerFall.cs" />
     <Compile Include="units\_base\scripts\transitions\enemy\EnemyToIdle.cs" />
     <Compile Include="units\_base\scripts\transitions\enemy\EnemyToChase.cs" />
   </ItemGroup>

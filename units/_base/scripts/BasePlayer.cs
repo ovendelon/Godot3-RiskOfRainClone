@@ -16,27 +16,18 @@ public class BasePlayer : BaseUnit, IUnitCollectsCoins
         _collision_layer = 1;
         AddToGroup( "player" );
 
-        var st_idle = new Idle();
-        var st_move = new PlayerMove();
-        var st_air = new PlayerMidAir();
+        var st_ground = new PlayerGround();
+        var st_air = new PlayerAir();
 
-        var tr_to_idle = new PlayerToIdle( st_idle );
-        var tr_to_move = new PlayerToMove( st_move );
-        var tr_to_air = new ToAir( st_air );
         var tr_jump = new PlayerJump( st_air );
+        var tr_fall = new PlayerFall( st_air );
+        var tr_land = new PlayerLand( st_ground );
 
-        st_idle.AddTransition( tr_to_move );
-        st_idle.AddTransition( tr_to_air );
-        st_idle.AddTransition( tr_jump );
-        
-        st_move.AddTransition( tr_to_idle );
-        st_move.AddTransition( tr_to_air );
-        st_move.AddTransition( tr_jump );
+        st_ground.AddTransition( tr_jump );
+        st_ground.AddTransition( tr_fall );
+        st_air.AddTransition( tr_land );
 
-        st_air.AddTransition( tr_to_idle );
-        st_air.AddTransition( tr_to_move );
-
-        _fsm = new FSM( this , st_idle );
+        _fsm = new FSM( this , st_ground );
 
         Attributes.RunSpeed = 8;
         Attributes.JumpHeight = 4;
@@ -58,6 +49,11 @@ public class BasePlayer : BaseUnit, IUnitCollectsCoins
     {
         Attributes.Coins += amount;
         if ( CoinsChangedEvent != null ) CoinsChangedEvent( Attributes.Coins );
+    }
+
+    public void PlayAnimation( )
+    {
+
     }
 
 }

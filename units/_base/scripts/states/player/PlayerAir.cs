@@ -1,43 +1,36 @@
 using Godot;
 using System;
 
-public class PlayerMove : State
+public class PlayerAir : State
 {
+    float _airControlFactor = 0.5f;
     Vector3 _movement = new Vector3();
-
-    public PlayerMove() { }
 
     public override void Enter( Godot.Object agent )
     {
         BasePlayer p = agent as BasePlayer;
-        AnimationPlayer ap = p.FindNode( "AnimationPlayer" ) as AnimationPlayer;
-        ap.Play( "run-loop" );
+        p.AnimPlayer.TransitionNodeSetCurrent( "movement" , 2 );
     }
 
     public override void Update( Godot.Object agent ) 
     {
         BasePlayer p = agent as BasePlayer;
 
-        p.Velocity.y = -0.5f;
         _movement.z = 0;
         if ( Input.IsKeyPressed( GD.KEY_LEFT ) )
         {
-            _movement.z -= p.Attributes.RunSpeed;
+            _movement.z -= p.Attributes.RunSpeed * _airControlFactor;
             p.SetFacing( eUnitFacing.LEFT );
         }
         if ( Input.IsKeyPressed( GD.KEY_RIGHT ) )
         {
-            _movement.z += p.Attributes.RunSpeed;
+            _movement.z += p.Attributes.RunSpeed * _airControlFactor;
             p.SetFacing( eUnitFacing.RIGHT );            
         }
-
-        p.Velocity.z = _movement.z;
-
-        // AnimationPlayer ap = p.FindNode( "AnimationPlayer" ) as AnimationPlayer;
-        // if ( Math.Abs( _movement.z ) > 0.1 )
-        //     ap.Play( "run-loop" );
-        // else
-        //     ap.Play( "idle-loop" );
+        p.Velocity.y -= Const.Gravity * p.GetPhysicsProcessDeltaTime();
+        p.Velocity.z += _movement.z;
+        if ( Math.Abs( p.Velocity.z ) > p.Attributes.RunSpeed )
+            p.Velocity.z = p.Velocity.z / Math.Abs( p.Velocity.z ) * p.Attributes.RunSpeed;
 
         base.Update( agent );
     }
