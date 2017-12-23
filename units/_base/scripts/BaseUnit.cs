@@ -38,8 +38,8 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
 
     eUnitFacing _facing;
     eUnitFacing Facing { get { return _facing; } }
-    Vector3 _face_left = new Vector3();
-    Vector3 _face_right = new Vector3( 0, (float)Const.Pi, 0 );
+    Vector3 _face_left = new Vector3( 0, (float)Const.Pi, 0 );
+    Vector3 _face_right = new Vector3();
 
     public Action<float,float>      HealthChangedEvent;
 

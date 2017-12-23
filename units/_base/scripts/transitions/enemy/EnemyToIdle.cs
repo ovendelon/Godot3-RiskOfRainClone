@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public class ToIdle : Transition
+public class EnemyToIdle : Transition
 {
-    public ToIdle( State target_state ) : base( target_state )
+    public EnemyToIdle( State target_state ) : base( target_state )
     {
     }
 

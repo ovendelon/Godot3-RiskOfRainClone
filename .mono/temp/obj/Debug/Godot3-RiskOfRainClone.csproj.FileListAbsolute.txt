@@ -1,0 +1,5 @@
+D:\_OC\godot_builds_3.0\Godot3-RiskOfRainClone\.mono\temp\bin\Debug\Godot3-RiskOfRainClone.dll
+D:\_OC\godot_builds_3.0\Godot3-RiskOfRainClone\.mono\temp\bin\Debug\Godot3-RiskOfRainClone.pdb
+D:\_OC\godot_builds_3.0\Godot3-RiskOfRainClone\.mono\temp\obj\Debug\Godot3-RiskOfRainClone.csproj.CoreCompileInputs.cache
+D:\_OC\godot_builds_3.0\Godot3-RiskOfRainClone\.mono\temp\obj\Debug\Godot3-RiskOfRainClone.dll
+D:\_OC\godot_builds_3.0\Godot3-RiskOfRainClone\.mono\temp\obj\Debug\Godot3-RiskOfRainClone.pdb

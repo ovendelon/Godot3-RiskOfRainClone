@@ -11,8 +11,8 @@ public class BaseEnemy : BaseUnit
         var state_chase = new Chase();
         var state_idle = new Idle();
 
-        var tr_to_chase = new ToChase( state_chase );
-        var tr_to_idle = new ToIdle( state_idle );
+        var tr_to_chase = new EnemyToChase( state_chase );
+        var tr_to_idle = new EnemyToIdle( state_idle );
 
         state_chase.AddTransition( tr_to_idle );
         state_idle.AddTransition( tr_to_chase );

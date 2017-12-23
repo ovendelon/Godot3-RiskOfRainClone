@@ -1,9 +1,9 @@
 using Godot;
 using System;
 
-public class ToChase : Transition
+public class EnemyToChase : Transition
 {
-    public ToChase( State target_state ) : base( target_state )
+    public EnemyToChase( State target_state ) : base( target_state )
     {
     }
 

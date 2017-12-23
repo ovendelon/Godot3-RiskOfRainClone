@@ -61,8 +61,14 @@
     <Compile Include="units\_base\scripts\UnitInterfaces.cs" />
     <Compile Include="units\_base\scripts\states\Idle.cs" />
     <Compile Include="units\_base\scripts\states\enemy\Chase.cs" />
-    <Compile Include="units\_base\scripts\transitions\enemy\ToIdle.cs" />
-    <Compile Include="units\_base\scripts\transitions\enemy\ToChase.cs" />
+    <Compile Include="units\_base\scripts\states\player\PlayerMove.cs" />
+    <Compile Include="units\_base\scripts\states\player\PlayerMidAir.cs" />
+    <Compile Include="units\_base\scripts\transitions\ToAir.cs" />
+    <Compile Include="units\_base\scripts\transitions\player\PlayerToMove.cs" />
+    <Compile Include="units\_base\scripts\transitions\player\PlayerToIdle.cs" />
+    <Compile Include="units\_base\scripts\transitions\player\PlayerJump.cs" />
+    <Compile Include="units\_base\scripts\transitions\enemy\EnemyToIdle.cs" />
+    <Compile Include="units\_base\scripts\transitions\enemy\EnemyToChase.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

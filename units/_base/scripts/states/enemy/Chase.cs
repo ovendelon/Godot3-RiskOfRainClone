@@ -18,14 +18,17 @@ public class Chase : State
     {
         BaseUnit u = agent as BaseUnit;        
         Vector3 diff = _target.GetTranslation() - u.GetTranslation();
-        if ( diff.z > 0 )
-            u.SetFacing( eUnitFacing.LEFT );
         if ( diff.z < 0 )
+            u.SetFacing( eUnitFacing.LEFT );
+        if ( diff.z > 0 )
             u.SetFacing( eUnitFacing.RIGHT );
 
         if ( diff.Length() > u.Attributes.RunSpeed )
             diff = diff.Normalized() * u.Attributes.RunSpeed;
-        u.Velocity = diff;
+
+        u.Velocity.z = diff.z;
+        u.Velocity.y = -Const.Gravity;
+
         base.Update( agent );
     }
 }

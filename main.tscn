@@ -3,15 +3,15 @@
 [ext_resource path="res://units/player_units/triman/triman.tscn" type="PackedScene" id=1]
 [ext_resource path="res://units/enemy_units/bluehead/bluehead.tscn" type="PackedScene" id=2]
 
-[sub_resource type="PlaneShape" id=1]
+[sub_resource type="BoxShape" id=1]
 
-plane = Plane( 0, 1, 0, 0 )
+extents = Vector3( 6.08151, 1, 21.5206 )
 
-[node name="main" type="Spatial" index="0"]
+[node name="main" type="Spatial"]
 
 [node name="StaticBody" type="StaticBody" parent="." index="0"]
 
-editor/display_folded = true
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
 input_ray_pickable = true
 input_capture_on_drag = false
 collision_layer = 1
@@ -20,6 +20,7 @@ friction = 1.0
 bounce = 0.0
 constant_linear_velocity = Vector3( 0, 0, 0 )
 constant_angular_velocity = Vector3( 0, 0, 0 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody" index="0"]
 
@@ -29,8 +30,8 @@ disabled = false
 [node name="Camera" type="Camera" parent="." index="1"]
 
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -10, 1, 0 )
-keep_aspect = 1
-vaspect = true
+keep_aspect = 0
+vaspect = false
 cull_mask = 1048575
 environment = null
 h_offset = 0.0
