@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://units/_base/scenes/base_unit.tscn" type="PackedScene" id=1]
+[ext_resource path="res://units/_base/scripts/BasePlayer.cs" type="Script" id=2]
+[ext_resource path="res://units/player_units/triman/render/triman_render.tscn" type="PackedScene" id=3]
+
+[node name="triman" instance=ExtResource( 1 )]
+
+collision_layer = 2
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision", "collision" ]
+
+[node name="triman_render" parent="." index="1" instance=ExtResource( 3 )]
+
+

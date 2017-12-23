@@ -1,0 +1,33 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+
+code = "shader_type spatial;
+render_mode unshaded; 
+
+
+uniform vec4 up : hint_color;
+uniform vec4 left : hint_color;
+uniform vec4 right : hint_color;
+//uniform sampler2D _tex : hint_white;
+
+varying vec3 n;
+
+void vertex()
+{
+	n = NORMAL;//normalize( ( WORLD_MATRIX * vec4( NORMAL, 1.0 ) ).xyz );
+}
+
+void fragment()
+{
+	vec3 light = vec3(0);
+	light += up.xyz * abs( n.y );
+	light += left.xyz * abs( n.x );
+	light += right.xyz * abs( n.z );
+	
+	//vec3 _t = texture( _tex, UV ).xyz;
+	
+	ALBEDO = light;
+}"
+_sections_unfolded = [ "Resource" ]
+
