@@ -23,7 +23,12 @@ public class EnemyAttack : State
             if ( obj is BasePlayer )
             {
                 BasePlayer player = obj as BasePlayer;
-                player.TakeDamage( enemy.CalculateDamage(player) );
+
+                var dmg = enemy.CalculateDamage(player);
+                player.TakeDamage( dmg );
+
+                var msg = enemy.GetNode( "/root/messanger") as messanger;
+                msg.PlayerDamage( dmg, player.GetTranslation() );
             }
     }
 

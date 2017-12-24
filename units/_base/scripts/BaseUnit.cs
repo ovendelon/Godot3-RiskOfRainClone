@@ -43,6 +43,7 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
     Vector3 _face_right = new Vector3();
 
     public Action<float,float>      HealthChangedEvent;
+    public Action                   OwnDeathEvent;
 
     public override void _Ready()
     {
@@ -72,25 +73,27 @@ public class BaseUnit : KinematicBody, IUnitDoesDamage, IUnitDamageable
         _facing = f;
     }   
 
-    public float CalculateDamage( BaseUnit target )
+    public Damage CalculateDamage( BaseUnit target )
     {
-        bool crit = MathUtils.GetRandom() <= Attributes.CritChance;
-        float damage = Attributes.Damage * MathUtils.GetRandom( 0.8f , 1.0f );
-        if ( crit ) 
-            damage *= -2;
+        Damage dmg = new Damage();
+        dmg.is_crit = MathUtils.GetRandom() <= Attributes.CritChance;
+        dmg.amount = Attributes.Damage * MathUtils.GetRandom( 0.8f , 1.0f );
+        if ( dmg.is_crit ) 
+            dmg.amount *= MathUtils.GetRandom( 1.4f , 1.6f );
         // foreach ( rrItem item in Items )
         //     if ( item is IModifyDamage )
         //         di.Damage = ((IModifyDamage)item).ModifyDamage( target, di.Damage );
-        return damage;
+        return dmg;
     }
 
-    public bool TakeDamage( float amount )
+    public bool TakeDamage( Damage dmg )
     {
-        Attributes.Health -= amount;
+        Attributes.Health -= dmg.amount;
         if ( HealthChangedEvent != null ) HealthChangedEvent( Attributes.Health, Attributes.MaxHealth );
         if ( Attributes.Health <= 0 )
         {
             Die();
+            if ( OwnDeathEvent != null ) OwnDeathEvent();
             return true;
         }
         return false;

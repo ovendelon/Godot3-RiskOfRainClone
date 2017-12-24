@@ -39,14 +39,14 @@ public class PlayerSkill1 : State
     {
         if ( enemy is IUnitDamageable )
         {
-            float dmg = player.CalculateDamage( enemy );                    // return negative damage if it's fatal; probably stupid hack to avoid struct for damage
-            bool crit = dmg < 0;
-            dmg = Math.Abs( dmg );
-            if ( crit && player.CritEvent != null ) 
+            Damage dmg = player.CalculateDamage( enemy );                    // return negative damage if it's fatal; probably stupid hack to avoid struct for damage
+            if ( dmg.is_crit && player.CritEvent != null ) 
                 player.CritEvent();
             if ( ((IUnitDamageable)enemy).TakeDamage( dmg ) )               // return true if damage is fatal
                 if ( player.DeathEvent != null ) player.DeathEvent();
             if ( player.HitEvent != null ) player.HitEvent();
+            var msg = enemy.GetNode( "/root/messanger") as messanger;
+            msg.EnemyDamage( dmg, enemy.GetTranslation() );
         }
 
         if ( enemy is IUnitPushable )

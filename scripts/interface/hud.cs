@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public class HUD : Control
+public class hud : Control
 {
 
     TextureProgress _healthbar_progress;

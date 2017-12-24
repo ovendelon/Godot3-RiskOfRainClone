@@ -49,10 +49,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="interface\enemies_healthbar\EnemyHealthbar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\Const.cs" />
     <Compile Include="scripts\FollowCamera.cs" />
-    <Compile Include="scripts\HUD.cs" />
+    <Compile Include="scripts\interface\hud.cs" />
+    <Compile Include="scripts\interface\messanger.cs" />
+    <Compile Include="scripts\interface\MovingMessage.cs" />
     <Compile Include="scripts\MathUtils.cs" />
     <Compile Include="scripts\fsm\FSM.cs" />
     <Compile Include="scripts\fsm\State.cs" />
